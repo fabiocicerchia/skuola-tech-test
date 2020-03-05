@@ -1,0 +1,29 @@
+{
+    "name": "fabiocicerchia/skuola-tech-test",
+    "description": "Skuola's Tech Test",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.2",
+        "symfony/console": "^5.0",
+        "roave/security-advisories": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabio Cicerchia",
+            "email": "info@fabiocicerchia.it"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Anagrams\\": "src/Anagrams"
+        }
+    },
+    "scripts": {
+        "tests": "phpdbg -qrr ./vendor/bin/phpunit"
+    }
+}

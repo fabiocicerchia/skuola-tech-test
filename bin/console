@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Anagrams\Command\VerifyAnagramsCommand;
+ 
+$console = new Application();
+
+$defaultCommand = new VerifyAnagramsCommand;
+$console->add($defaultCommand);
+
+$console->setDefaultCommand($defaultCommand->getName(), true);
+$console->run();
