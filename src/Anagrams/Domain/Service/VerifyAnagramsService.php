@@ -2,8 +2,8 @@
 
 namespace Anagrams\Domain\Service;
 
-use Anagrams\Domain\Entity\Haystack;
-use Anagrams\Domain\Entity\Needle;
+use Anagrams\Domain\Entity\HaystackInterface;
+use Anagrams\Domain\Entity\NeedleInterface;
 
 class VerifyAnagramsService
 {
@@ -11,11 +11,11 @@ class VerifyAnagramsService
      * Verifies that a needle (or any of its anagrams) is contained in an haystack.
      * BigO: O(n)
      *
-     * @param Haystack $haystack
-     * @param Needle $needle
+     * @param HaystackInterface $haystack
+     * @param NeedleInterface $needle
      * @return int a positive value is a match, a negative value is not
      */
-    public function containsAnagram(Haystack $haystack, Needle $needle): bool
+    public function containsAnagram(HaystackInterface $haystack, NeedleInterface $needle): bool
     {
         $haystackLength = $haystack->length();
         $needleLength   = $needle->length();
@@ -40,7 +40,7 @@ class VerifyAnagramsService
         return $this->isAFullMatch($charsLeftInNeedle);
     }
 
-    private function processChar(Needle $needle, array &$charsLeftInNeedle, $pos)
+    private function processChar(NeedleInterface $needle, array &$charsLeftInNeedle, $pos): ?bool
     {
         if ($pos === false) {
             // didn't find a consecutive match, reset the charsLeftInNeedle
@@ -54,7 +54,7 @@ class VerifyAnagramsService
         }
     }
 
-    private function gotOneCharMatch(array &$charsLeftInNeedle, int $pos)
+    private function gotOneCharMatch(array &$charsLeftInNeedle, int $pos): ?bool
     {
         unset($charsLeftInNeedle[$pos]);
     
@@ -64,7 +64,7 @@ class VerifyAnagramsService
         }
     }
 
-    private function isAFullMatch(array $charsLeftInNeedle)
+    private function isAFullMatch(array $charsLeftInNeedle): bool
     {
         return empty($charsLeftInNeedle);
     }

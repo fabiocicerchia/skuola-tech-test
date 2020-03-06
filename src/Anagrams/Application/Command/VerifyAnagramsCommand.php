@@ -31,13 +31,13 @@ class VerifyAnagramsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $haystack = new Haystack($input->getArgument('haystack'));
-        $needle   = new Needle($input->getArgument('needle'));
-
         $service = new VerifyAnagramsService;
 
         try {
-            $result = $service->containsAnagram($haystack, $needle);
+            $result = $service->containsAnagram(
+                new Haystack($input->getArgument('haystack')),
+                new Needle($input->getArgument('needle'))
+            );
         } catch (\InvalidArgumentException $e) {
             $result = 0;
         }

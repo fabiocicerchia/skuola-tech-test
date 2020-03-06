@@ -2,7 +2,7 @@
 
 namespace Anagrams\Domain\Entity;
 
-class Needle
+class Needle implements NeedleInterface
 {
     protected $value = '';
 
@@ -32,7 +32,7 @@ class Needle
         return preg_split('//u', $this->value, null, PREG_SPLIT_NO_EMPTY);
     }
 
-    public function getSorted(): self
+    public function getSorted(): NeedleInterface
     {
         $needleChars = $this->toArray();
         sort($needleChars);

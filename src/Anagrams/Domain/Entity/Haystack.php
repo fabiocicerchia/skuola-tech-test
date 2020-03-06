@@ -2,7 +2,7 @@
 
 namespace Anagrams\Domain\Entity;
 
-class Haystack
+class Haystack implements HaystackInterface
 {
     protected $value = '';
 
@@ -27,7 +27,7 @@ class Haystack
         return mb_strlen($this->value);
     }
 
-    public function contains(Needle $needle): bool
+    public function contains(NeedleInterface $needle): bool
     {
         return mb_strpos($this->value, $needle->getValue()) !== false;
     }

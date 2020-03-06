@@ -61,7 +61,7 @@
 
  1. [X] DRY
  1. [X] Quick & dirty
- 1. [ ] SOLID
+ 1. [X] SOLID
  1. [X] OOP
 
 ## Algorithm (4 items)
