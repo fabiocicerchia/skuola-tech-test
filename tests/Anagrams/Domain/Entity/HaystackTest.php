@@ -1,6 +1,6 @@
 <?php
 
-namespace Anagrams\Entity;
+namespace Anagrams\Domain\Entity;
 
 use PHPUnit\Framework\TestCase;
 

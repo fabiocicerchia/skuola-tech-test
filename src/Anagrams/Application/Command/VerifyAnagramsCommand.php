@@ -1,14 +1,14 @@
 <?php
 
-namespace Anagrams\Command;
+namespace Anagrams\Application\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Anagrams\Service\VerifyAnagramsService;
-use Anagrams\Entity\Haystack;
-use Anagrams\Entity\Needle;
+use Anagrams\Domain\Service\VerifyAnagramsService;
+use Anagrams\Domain\Entity\Haystack;
+use Anagrams\Domain\Entity\Needle;
 
 /**
  * @codeCoverageIgnore

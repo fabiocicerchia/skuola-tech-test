@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use Anagrams\Command\VerifyAnagramsCommand;
+use Anagrams\Application\Command\VerifyAnagramsCommand;
  
 $console = new Application();
 

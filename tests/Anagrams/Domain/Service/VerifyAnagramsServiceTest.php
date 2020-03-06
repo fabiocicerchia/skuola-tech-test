@@ -1,10 +1,10 @@
 <?php
 
-namespace Anagrams\Service;
+namespace Anagrams\Domain\Service;
 
 use PHPUnit\Framework\TestCase;
-use Anagrams\Entity\Haystack;
-use Anagrams\Entity\Needle;
+use Anagrams\Domain\Entity\Haystack;
+use Anagrams\Domain\Entity\Needle;
 
 class VerifyAnagramsServiceTest extends TestCase
 {
