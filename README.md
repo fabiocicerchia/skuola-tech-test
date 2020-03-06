@@ -28,6 +28,13 @@ string B.
  - PHP 7.2+
  - PHPDBG (for tests)
 
+## Install
+
+```
+$ wget https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer -O - -q | php -- --quiet
+$ composer install
+```
+
 ## Usage
 
 ### Quick & Dirty Version
@@ -79,3 +86,7 @@ OK (25 tests, 30 assertions)
 
 Generating code coverage report in HTML format ... done [214 ms]
 ```
+
+## UML
+
+![UML Graph](docs/uml.png)

@@ -96,6 +96,7 @@
  1. [X] HACKs
  1. [ ] Logs
  1. [X] Unusual behaviour is commented
+ 1. [X] UML
 
 ## Tests (4 items)
 
