@@ -15,14 +15,14 @@ class VerifyAnagramsService
      * @param Needle $needle
      * @return int a positive value is a match, a negative value is not
      */
-    public function containsAnagram(Haystack $haystack, Needle $needle): int
+    public function containsAnagram(Haystack $haystack, Needle $needle): bool
     {
-        $haystackLength = mb_strlen($haystack->getValue());
-        $needleLength   = mb_strlen($needle->getValue());
+        $haystackLength = $haystack->length();
+        $needleLength   = $needle->length();
     
         if ($needleLength > $haystackLength) {
             throw new \UnexpectedValueException('the needle cannot be longer than the haystack');
-        } elseif ($haystack->contains($needle->getValue()) || $haystack->contains($needle->getSortedValue())) {
+        } elseif ($haystack->contains($needle) || $haystack->contains($needle->getSorted())) {
             return true;
         }
     
@@ -32,19 +32,40 @@ class VerifyAnagramsService
             $char = $haystack->charAt($i);
             $pos  = array_search($char, $charsLeftInNeedle);
     
-            if ($pos !== false) {
-                unset($charsLeftInNeedle[$pos]);
-    
-                // found last matching char of needle
-                if (empty($charsLeftInNeedle)) {
-                    return true;
-                }
-            } else {
-                // didn't find a consecutive match, reset the charsLeftInNeedle
-                $charsLeftInNeedle = $needle->toArray();
+            if ($this->processChar($needle, $charsLeftInNeedle, $pos)) {
+                return true;
             }
         }
     
+        return $this->isAFullMatch($charsLeftInNeedle);
+    }
+
+    private function processChar(Needle $needle, array &$charsLeftInNeedle, $pos)
+    {
+        if ($pos === false) {
+            // didn't find a consecutive match, reset the charsLeftInNeedle
+            $charsLeftInNeedle = $needle->toArray();
+
+            return;
+        }
+
+        if ($this->gotOneCharMatch($charsLeftInNeedle, $pos)) {
+            return true;
+        }
+    }
+
+    private function gotOneCharMatch(array &$charsLeftInNeedle, int $pos)
+    {
+        unset($charsLeftInNeedle[$pos]);
+    
+        // found last matching char of needle
+        if ($this->isAFullMatch($charsLeftInNeedle)) {
+            return true;
+        }
+    }
+
+    private function isAFullMatch(array $charsLeftInNeedle)
+    {
         return empty($charsLeftInNeedle);
     }
 }

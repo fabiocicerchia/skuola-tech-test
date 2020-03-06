@@ -10,8 +10,7 @@ class Haystack
     {
         if (mb_strlen($value) === 0) {
             throw new \InvalidArgumentException('haystack cannot be empty');
-        }
-        if (mb_strlen($value) > 1024) {
+        } elseif (mb_strlen($value) > 1024) {
             throw new \InvalidArgumentException('haystack cannot have a length greater than 1024 chars');
         }
 
@@ -23,9 +22,14 @@ class Haystack
         return $this->value;
     }
 
-    public function contains(string $substring): bool
+    public function length(): int
     {
-        return mb_strpos($this->value, $substring) !== false;
+        return mb_strlen($this->value);
+    }
+
+    public function contains(Needle $needle): bool
+    {
+        return mb_strpos($this->value, $needle->getValue()) !== false;
     }
 
     public function charAt(int $pos): string

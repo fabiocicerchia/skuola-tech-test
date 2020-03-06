@@ -18,7 +18,7 @@
  1. [X] Correct data types or structures
  1. [ ] Design patterns
  1. [X] No mixed tabs vs spaces
- 1. [ ] Getters & Setters
+ 1. [X] Getters & Setters
  1. [X] Use Exceptions rather than return codes
  1. [X] Don't return null
  1. [ ] Make class final if not being used for inheritance
@@ -47,7 +47,7 @@
  1. [X] No magic variables
  1. [X] No magic values
  1. [X] No magic methods
- 1. [ ] Law of Demeter
+ 1. [X] Law of Demeter
  1. [X] No over engineered
  
 ## Readability (4 items)
